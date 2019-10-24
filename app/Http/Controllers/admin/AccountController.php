@@ -6,9 +6,9 @@ use App\Role;
 use App\User;
 use App\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
+use Illuminate\Support\Facades\DB;
 class AccountController extends Controller
 {
 
@@ -19,7 +19,8 @@ class AccountController extends Controller
 
         return view('admin.openPage');
     }
-    public function closePage(){
+    public function closePage(Request $request){
+//        dump($request->getMethod());die;
        $roles =  DB::table('roles')->get()->toArray();
         $controllers = Controller::All();
 

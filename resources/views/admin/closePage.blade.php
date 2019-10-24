@@ -7,7 +7,10 @@
                 <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                     <div class="row">
                         <div class="col-sm-12">
-                            <form action="#">
+                            {!! Form::open() !!}
+                            {!! Form::text('name') !!}
+                            {!! Form::close() !!}
+                            <form  method="POST" action="{{route('closePage')}}">
                                 <table id="example1" class="table table-bordered table-striped dataTable" role="grid"
                                        aria-describedby="example1_info">
                                     <thead>
@@ -41,10 +44,10 @@
                                             </td>
                                             @foreach($roles as $role)
                                                 @foreach($item->roles as $roleController)
-                                                    @if($roleController->name == $role->name )@php  $check = 15; @endphp  @endif
+                                                    @if($roleController->name == $role->name )@php  $check = 1; @endphp  @endif
                                                 @endforeach
                                                 <td>
-                                                    <input type="checkbox" @if($check){{'checked'}} {!! $check=0 !!} @endif >
+                                                    <input type="checkbox" @if(isset($check) && $check!=0){{'checked'}} {!! $check=0 !!} @endif >
                                                 </td>
                                             @endforeach
 

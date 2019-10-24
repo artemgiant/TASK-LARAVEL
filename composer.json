@@ -7,8 +7,10 @@
     "require": {
         "php": ">=5.6.4",
         "fxp/composer-asset-plugin": "^1.4",
+        "illuminate/html": "^5.0",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
+        "laravelcollective/html": "^5.3.0",
         "mouf/nodejs-installer": "^1.0"
     },
     "require-dev": {
