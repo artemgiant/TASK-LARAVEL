@@ -16,8 +16,9 @@ class CreateControllerRoleTable extends Migration
     {
         Schema::create('controller_role', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('role_id')->unsigned();
             $table->integer('controller_id')->unsigned();
+            $table->integer('role_id')->unsigned();
+
         });
     }
     public function down()
