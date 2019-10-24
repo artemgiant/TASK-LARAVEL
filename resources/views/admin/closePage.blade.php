@@ -8,15 +8,6 @@
                     <div class="row">
                         <div class="col-sm-12">
                             {!! Form::open(array('url' => route('closePage'),'method' => 'POST')) !!}
-                            {!! Form::text('name') !!}
-                             <label>
-                            	{!! Form::checkbox('name', '1', null,  ['id' => 'name']) !!}
-                            	Some text here
-                            </label>
-                             {!! Form::submit('Submit', ['class' => 'form-control']) !!}
-                            {{ csrf_field() }}
-                            {!! Form::close() !!}
-                            {!! Form::open(array('url' => route('closePage'),'method' => 'POST')) !!}
                                 <table id="example1" class="table table-bordered table-striped dataTable" role="grid"
                                        aria-describedby="example1_info">
                                     <thead>

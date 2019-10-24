@@ -21,14 +21,13 @@ class AccountController extends Controller
     }
     public function closePage(Request $request){
         if($request->getMethod()=="POST"){
-          dump(  $request->request->all());
 
             array_filter ($request->request->all(),function ($v){
                 if($v!='_token') {
                     $v = preg_split("/__/", $v, 2);
                     DB::table('controller_role')
                         ->updateOrInsert(
-                            ['controller_id' => $v[0]],
+                            ['controller_id' => $v[0],'role_id'=>$v[1]],
                             ['role_id' => $v[1],'check'=>1]
                         );
                 }
