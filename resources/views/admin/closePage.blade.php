@@ -7,10 +7,16 @@
                 <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                     <div class="row">
                         <div class="col-sm-12">
-                            {!! Form::open() !!}
+                            {!! Form::open(array('url' => route('closePage'),'method' => 'POST')) !!}
                             {!! Form::text('name') !!}
+                             <label>
+                            	{!! Form::checkbox('name', '1', null,  ['id' => 'name']) !!}
+                            	Some text here
+                            </label>
+                             {!! Form::submit('Submit', ['class' => 'form-control']) !!}
+                            {{ csrf_field() }}
                             {!! Form::close() !!}
-                            <form  method="POST" action="{{route('closePage')}}">
+                            {!! Form::open(array('url' => route('closePage'),'method' => 'POST')) !!}
                                 <table id="example1" class="table table-bordered table-striped dataTable" role="grid"
                                        aria-describedby="example1_info">
                                     <thead>
@@ -47,7 +53,7 @@
                                                     @if($roleController->name == $role->name )@php  $check = 1; @endphp  @endif
                                                 @endforeach
                                                 <td>
-                                                    <input type="checkbox" @if(isset($check) && $check!=0){{'checked'}} {!! $check=0 !!} @endif >
+                                                    <input name="{!!  ($item->id.'__'.$role->id)!!}" type="checkbox" @if(isset($check) && $check!=0){{'checked'}} {!! $check=0 !!} @endif >
                                                 </td>
                                             @endforeach
 
@@ -72,7 +78,7 @@
                                     </tfoot>
                                 </table>
                                 <button type="submit" class="btn btn-primary">Save</button>
-                            </form>
+                            {!! Form::close() !!}
                         </div>
                     </div>
 

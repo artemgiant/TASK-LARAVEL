@@ -29,7 +29,7 @@ Route::group(
 
         Route::get('/', 'admin\AccountController@index')->name('page');
         Route::get('/openPage', 'admin\AccountController@openPage')->name('openPage');
-        Route::get('/closePage', 'admin\AccountController@closePage')->name('closePage');
+        Route::match(['GET', 'POST'],'/closePage', 'admin\AccountController@closePage')->name('closePage');
 
     }
 );
