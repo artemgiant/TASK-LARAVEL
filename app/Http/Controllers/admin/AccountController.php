@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use App\User;
+use App\Controller;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
@@ -19,18 +19,25 @@ class AccountController extends Controller
         return view('admin.openPage');
     }
     public function closePage(){
-       $users =  DB::table('roles')->get();
+       $roles =  DB::table('roles')->get()->toArray();
+       $controllers =  DB::table('controllers')->get();
+//       $related = DB::table('controller_role');
 
-        $controllers = [];
-        foreach (Route::getRoutes()->getRoutes() as $route)
-        {
-            $action = $route->getAction();
-            if (array_key_exists('controller', $action))
-            {
-                $controllers[] = $action['controller'];
-            }
-        }
+        $test = new Controller();
+        $test =  $test->reletedRoles();
+        dump($test);die;
+//        $controllers
+//        $controllers = [];
+//        foreach (Route::getRoutes()->getRoutes() as $route)
+//        {
+//            $action = $route->getAction();
+//            if (array_key_exists('controller', $action))
+//            {
+//                $controllers[] = $action['controller'];
+//            }
+//        }
 
-        return view('admin.closePage',['users'=>$users,'controllers'=>$controllers]);
+            dump($controllers[0]);die;
+        return view('admin.closePage',['roles'=>$roles,'controllers'=>$controllers]);
     }
 }
