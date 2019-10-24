@@ -18,3 +18,18 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//admin
+Route::group(
+    [
+        'prefix' => 'admin',
+        'middleware' => 'auth',
+    ],
+    function () {
+
+        Route::get('/', 'admin\AccountController@index')->name('page');
+        Route::get('/openPage', 'admin\AccountController@openPage')->name('openPage');
+        Route::get('/closePage', 'admin\AccountController@closePage')->name('closePage');
+
+    }
+);

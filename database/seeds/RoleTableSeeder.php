@@ -12,13 +12,15 @@ class RoleTableSeeder extends Seeder
      */
     public function run()
     {
-        $role_employee = new Role();
-        $role_employee->name = 'employee';
-        $role_employee->description = 'A Employee User';
-    $role_employee->save();
-    $role_manager = new Role();
-    $role_manager->name = 'manager';
-    $role_manager->description = 'A Manager User';
-    $role_manager->save();
+        $role_ADMIN = new Role();
+        $role_ADMIN->name = 'ADMIN';
+        $role_ADMIN->description = 'A Admin User';
+        $role_ADMIN->save();
+        $role_SUPRES_ADMIN = new Role();
+        $role_SUPRES_ADMIN->name = 'SUPER ADMIN';
+        $role_SUPRES_ADMIN->description = 'A Super Admin User';
+        $role_SUPRES_ADMIN->save();
+
+
   }
 }
