@@ -11,17 +11,17 @@ class CreateRolesTable extends Migration
      *
      * @return void
      */
-    public function up ()
+    public function up()
     {
-        Schema :: create ('role', function (Blueprint $table) {
-        $table-> increments ('id');
-    $table-> string ('name');
-    $table-> string ( 'description');
-    $table-> timestamps ();
-  });
-}
-    public function down ()
+        Schema::create('roles', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('description');
+            $table->timestamps();
+        });
+    }
+    public function down()
     {
-        Schema :: dropIfExists ('role');
+        Schema::dropIfExists('roles');
     }
 }
