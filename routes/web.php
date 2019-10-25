@@ -23,7 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(
     [
         'prefix' => 'admin',
-        'middleware' => 'auth',
+        'middleware' => ['auth', 'can:admin'],
     ],
     function () {
 

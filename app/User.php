@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Auth;
+use phpDocumentor\Reflection\Types\Boolean;
 
 class User extends Authenticatable
 {
@@ -58,6 +60,17 @@ class User extends Authenticatable
     public function hasRole($role)
     {
         return null !== $this->roles()->where('name', $role)->first();
+    }
+
+    public function isSuperAdmin(): bool
+    {
+        if (Auth::check()) {
+            $user = Auth::user();
+            foreach ($user->roles as $role){
+             $roles[]=$role->name;
+            }
+          return in_array ( "SUPER ADMIN", $roles ) || in_array ( "ADMIN", $roles );
+        }
     }
 
 

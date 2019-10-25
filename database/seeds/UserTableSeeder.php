@@ -15,15 +15,15 @@ class UserTableSeeder extends Seeder
         $role_ADMIN = Role::where('name', 'ADMIN')->first();
         $role_SUPRER_ADMIN  = Role::where('name', 'SUPER ADMIN')->first();
         $admin = new User();
-        $admin->name = 'Employee Name';
-        $admin->email = 'employee@example.com';
-        $admin->password = bcrypt('secret');
+        $admin->name = 'admin@example.com';
+        $admin->email = 'admin@example.com';
+        $admin->password = bcrypt('12345678');
         $admin->save();
         $admin->roles()->attach($role_ADMIN);
          $superAdmin = new User();
-        $superAdmin->name = 'Manager Name';
-        $superAdmin->email = 'manager@example.com';
-        $superAdmin->password = bcrypt('secret');
+        $superAdmin->name = 'superadmin@example.com';
+        $superAdmin->email = 'superadmin@example.com';
+        $superAdmin->password = bcrypt('12345678');
         $superAdmin->save();
         $superAdmin->roles()->attach($role_SUPRER_ADMIN);
   }
