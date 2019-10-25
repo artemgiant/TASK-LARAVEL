@@ -14,8 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
 Auth::routes();
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -27,9 +27,9 @@ Route::group(
     ],
     function () {
 
-        Route::get('/', 'admin\AccountController@index')->name('page');
-        Route::get('/openPage', 'admin\AccountController@openPage')->name('openPage');
-        Route::match(['GET', 'POST'],'/closePage', 'admin\AccountController@closePage')->name('closePage');
+        Route::get('/', 'admin\AccountController@index')->middleware('can:access-to-controller')->name('page');
+        Route::get('/openPage', 'admin\AccountController@openPage')->middleware('can:access-to-controller')->name('openPage');
+        Route::match(['GET', 'POST'],'/closePage', 'admin\AccountController@closePage')->middleware('can:access-to-controller')->name('closePage');
 
     }
 );

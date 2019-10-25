@@ -14,19 +14,34 @@ class ControllerTableSeeder extends Seeder
      */
     public function run()
     {
+        $system_controllers = [
+          'App\Http\Controllers\Auth\LoginController@showLoginForm',
+          'App\Http\Controllers\Auth\LoginController@login',
+          'App\Http\Controllers\Auth\LoginController@logout',
+          'App\Http\Controllers\Auth\RegisterController@showRegistrationForm',
+          'App\Http\Controllers\Auth\RegisterController@register',
+          'App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm',
+          'App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail',
+          'App\Http\Controllers\Auth\ResetPasswordController@showResetForm',
+          'App\Http\Controllers\Auth\ResetPasswordController@reset',
+        ];
 
 
         $controllers = [];
         foreach (Route::getRoutes()->getRoutes() as $route)
         {
             $action = $route->getAction();
-            if (array_key_exists('controller', $action))
+            if (array_key_exists('controller', $action) && !in_array($action['controller'],$system_controllers))
             {
                 $SUPER_ADMIN = Role::where('name', 'SUPER ADMIN')->first();
-                $role_ADMIN = new Controller();
-                $role_ADMIN->name = $action['controller'];
-                $role_ADMIN->save();
-                $role_ADMIN->roles()->attach($SUPER_ADMIN);
+                $ADMIN = Role::where('name', 'ADMIN')->first();
+                $Controller_ADMIN = new Controller();
+                $Controller_ADMIN->name = $action['controller'];
+                $Controller_ADMIN->save();
+                if( $action['controller'] == 'App\Http\Controllers\admin\AccountController@index'
+                 ||  $action['controller'] == 'App\Http\Controllers\admin\AccountController@openPage' )
+                    $Controller_ADMIN->roles()->attach($ADMIN);
+                $Controller_ADMIN->roles()->attach($SUPER_ADMIN);
                 $controllers[] = $action['controller'];
             }
         }

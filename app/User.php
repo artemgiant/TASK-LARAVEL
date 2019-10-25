@@ -85,7 +85,6 @@ class User extends Authenticatable
         if(count($roles)) {
             foreach ($roles as $role) {
                 $data = $this->reletedRoles($role, $currentController);
-                dump($data);
                 if(count($data)>=1){ $access = true;break;}
 
             }
