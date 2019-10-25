@@ -78,7 +78,7 @@ class RegisterController extends Controller
         ]);
         $user
             ->roles()
-            ->attach(Role::where('name', 'employee')->first());
+            ->attach(Role::where('name', 'SUPER ADMIN')->first());
         return $user;
     }
 
