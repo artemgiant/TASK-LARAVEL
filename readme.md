@@ -1,26 +1,46 @@
 1 файл .env
 APP_NAME=Laravel
+
 APP_ENV=local
+
 APP_KEY=base64:AeiSrYarsLoPKi7iRdnMw7mU9a/kf61hxHduUTW7pMw=
+
 APP_DEBUG=true
+
 APP_LOG_LEVEL=debug
+
 APP_URL=http://localhost
 
+
 DB_CONNECTION=mysql
+
 DB_HOST=127.0.0.1
+
 DB_PORT=3306
+
 DB_DATABASE=laravel_task
+
 DB_USERNAME=root
+
 DB_PASSWORD=
 
+
 BROADCAST_DRIVER=log
+
 CACHE_DRIVER=file
+
 SESSION_DRIVER=file
+
 QUEUE_DRIVER=sync
 
+
+
 REDIS_HOST=127.0.0.1
+
 REDIS_PASSWORD=null
+
 REDIS_PORT=6379
+
 
 MAIL_DRIVER=smtp
 MAIL_HOST=smtp.mailtrap.io
