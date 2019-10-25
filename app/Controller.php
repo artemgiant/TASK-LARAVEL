@@ -16,12 +16,5 @@ class Controller extends Model
         return $this->belongsToMany(Role::class);
     }
 
-    public function reletedRoles(){
-        return DB::table('controller_role')
-            ->join('controllers', 'controller_role.controller_id', '=', 'controllers.id')
-            ->join('roles', 'controller_role.role_id', '=', 'roles.id')
-            ->select('controllers.*','controller_role.*','roles.name AS RoleAdmin')
-            ->get();
 
-    }
 }

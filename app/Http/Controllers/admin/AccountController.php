@@ -19,7 +19,8 @@ class AccountController extends Controller
     public function openPage(){
 
         $user = new User();
-        $user= $user->isSuperAdmin();
+        $user= $user->accessToController();
+        dump($user);
 
         if (Auth::check()) {
             /**
