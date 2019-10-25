@@ -18,24 +18,12 @@ class AccountController extends Controller
     }
     public function openPage(){
 
-        $user = new User();
-        $user= $user->accessToController();
-        dump($user);
 
-        if (Auth::check()) {
-            /**
-             * После проверки уже можешь получать любое свойство модели
-             * пользователя через фасад Auth, например id
-             */
-            $user = Auth::user();
-            foreach ($user->roles as $role){
-                dump($role->name);
-
-            }
-        }
         return view('admin.openPage');
     }
     public function closePage(Request $request){
+
+
         if($request->getMethod()=="POST"){
 
             array_filter ($request->request->all(),function ($v){

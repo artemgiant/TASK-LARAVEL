@@ -75,7 +75,9 @@ class User extends Authenticatable
     public function isSuperAdmin(): bool
     {
        $roles = $this->getRole('name');
-       return in_array ( "SUPER ADMIN", $roles ) || in_array ( "ADMIN", $roles );
+       $access = null;
+        if(preg_grep ('/ADMIN/i', $roles))$access = true;
+       return $access;
 
     }
     public function accessToController(){

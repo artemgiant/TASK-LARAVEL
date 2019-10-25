@@ -30,7 +30,9 @@ class AuthServiceProvider extends ServiceProvider
             return $user->isSuperAdmin();
         });
         Gate::define('access-to-controller', function (User $user) {
-            return $user->accessToController();
+
+               if( $user->accessToController())return true;
+              abort(403);
         });
 
     }
