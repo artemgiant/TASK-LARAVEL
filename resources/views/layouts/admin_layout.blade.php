@@ -32,6 +32,29 @@ to get the desired effect
 <body class="hold-transition sidebar-mini">
 
 <div class="wrapper">
+    <div class="panel-body">
+        @if (session('success'))
+            <div class="main-header alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+            @if (count($errors) > 0)
+            <div class="main-header alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true"><font
+                            style="vertical-align: inherit;"><font style="vertical-align: inherit;">×</font></font>
+                </button>
+                <h5><i class="icon fas fa-ban"></i><font style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;"> Error!</font></font></h5>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+
+
+    </div>
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
@@ -188,9 +211,9 @@ to get the desired effect
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('openPage') }}" class="nav-link">
+                                <a href="{{ route('listRole') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Open Page</p>
+                                    <p>List Role</p>
                                 </a>
                             </li>
                             <li class="nav-item">

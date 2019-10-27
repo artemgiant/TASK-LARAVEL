@@ -39,10 +39,11 @@ class ControllerTableSeeder extends Seeder
                 $Controller_ADMIN->name = $action['controller'];
                 $Controller_ADMIN->save();
                 if( $action['controller'] == 'App\Http\Controllers\admin\AccountController@index'
-                 ||  $action['controller'] == 'App\Http\Controllers\admin\AccountController@openPage'
+                 ||  $action['controller'] == 'App\Http\Controllers\admin\RoleController@createRole'
+                 ||  $action['controller'] == 'App\Http\Controllers\admin\RoleController@listRoleAction'
                  ||  $action['controller'] == 'App\Http\Controllers\HomeController@index'
-                )
-                    $Controller_ADMIN->roles()->attach($ADMIN);
+                ) $Controller_ADMIN->roles()->attach($ADMIN);
+
                 $Controller_ADMIN->roles()->attach($SUPER_ADMIN);
                 $controllers[] = $action['controller'];
             }

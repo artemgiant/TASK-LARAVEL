@@ -26,8 +26,8 @@ Route::group(
     function () {
 
         Route::get('/', 'admin\AccountController@index')->middleware('can:access-to-controller')->name('page');
-        Route::get('/openPage', 'admin\AccountController@openPage')->middleware('can:access-to-controller')->name('openPage');
-        Route::match(['GET', 'POST'],'/closePage', 'admin\AccountController@closePage')->middleware('can:access-to-controller')->name('closePage');
-
+        Route::match(['GET', 'POST'],'/page/close', 'admin\AccountController@closePage')->middleware('can:access-to-controller')->name('closePage');
+        Route::match(['GET', 'POST'],'/page/open', 'admin\RoleController@listRoleAction')->middleware('can:access-to-controller')->name('listRole');
+        Route::match(['GET','POST'],'create/role','admin\RoleController@createRole')->name('createRole');
     }
 );

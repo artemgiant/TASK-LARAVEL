@@ -5,22 +5,20 @@ namespace App\Http\Controllers\admin;
 use App\Role;
 use App\User;
 use App\Controller;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 use Illuminate\Support\Facades\DB;
+
 class AccountController extends Controller
 {
 
     public function index(){
-        return view('admin.pages');
+        return view('admin.dashboard');
     }
-    public function openPage(){
 
-
-        return view('admin.openPage');
-    }
     public function closePage(Request $request){
 
 
@@ -39,6 +37,8 @@ class AccountController extends Controller
 
             DB::table('controller_role')->where('check', '=', 0)->delete();
             DB::table('controller_role')->where('check', '=', 1)->update(['check' => 0]);
+
+            $request->session()->flash('success', 'Access to controllers updated successfully!');
 
             return redirect()->route('closePage');
         }

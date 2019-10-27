@@ -22,11 +22,11 @@ class RoleTableSeeder extends Seeder
         $role_SUPRES_ADMIN->save();
         $role_SUPRES_ADMIN = new Role();
         $role_SUPRES_ADMIN->name = 'EDIT ADMIN';
-        $role_SUPRES_ADMIN->description = 'A Super Admin User';
+        $role_SUPRES_ADMIN->description = 'A EDIT Admin User';
         $role_SUPRES_ADMIN->save();
         $role_SUPRES_ADMIN = new Role();
         $role_SUPRES_ADMIN->name = 'USER';
-        $role_SUPRES_ADMIN->description = 'A Super Admin User';
+        $role_SUPRES_ADMIN->description = 'A  User';
         $role_SUPRES_ADMIN->save();
 
 
